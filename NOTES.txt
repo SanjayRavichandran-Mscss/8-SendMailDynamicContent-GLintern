@@ -1,0 +1,43 @@
+This task involves creating a dynamic system for sending personalized offer letters via email using Node.js and Nodemailer. 
+The content of the offer letter, such as the candidate's name, position, salary, joining date, and location, is stored in a MySQL database table named offer_details. 
+When a new candidate's details are added via an API endpoint, the system dynamically fetches the data, updates an HTML email template with the candidate's details, and sends the personalized offer letter to the candidate's email address.
+Additionally, the recipient's email and timestamp are logged in the database for record-keeping.
+This ensures a streamlined and automated process for generating and sending professional offer letters.
+
+DATABASE NAME : sendmail
+
+Endpoint : http://localhost:7000/api/send-offer
+
+method :POST
+
+JSON FORMAT :
+
+{
+  "candidate_name": "Sanjay R",
+  "email": "sanpro2004.jay@gmail.com",
+  "position": "Full Stack Developer",
+  "company": "KG Genius Lab",
+  "salary": 900000,
+  "joining_date": "2024-01-03",
+  "location": "KGISL campus , saravanampatti ,Coimbatore-641035"
+}
+
+********************************************************************************************
+
+{{candidate_name}}
+{{position}}
+${{salary}}
+{{joining_date}} ,This is in html template for replace the value for this variable in runtime(dynamically).
+
+   // Replace placeholders with dynamic data
+    emailTemplate = emailTemplate
+      .replace('{{candidate_name}}', candidate_name)
+      .replace('{{position}}', position)
+      .replace('{{position}}', position)
+      .replace('{{company}}', company)
+      .replace('{{salary}}', salary)
+      .replace('{{joining_date}}', joining_date)
+      .replace('{{location}}', location);
+
+
+***********************************************************************************************
